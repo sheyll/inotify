@@ -1,4 +1,4 @@
-REBAR="./rebar"
+REBAR="./rebar3"
 SHELL = /bin/sh
 
 .DEFAULT_GOAL := compile

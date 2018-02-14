@@ -25,7 +25,9 @@
 -export([init/1,
          terminate/2,
          handle_cast/2,
-         handle_info/2]).
+         handle_info/2,
+         handle_call/3,
+         code_change/3]).
 
 -define(SERVER, ?MODULE).
 
@@ -112,6 +114,18 @@ handle_cast({unwatch, Unwatch}, LD) ->
 handle_cast(Msg, LD) ->
   ?log({unknown_message, Msg}),
   {noreply, LD}.
+
+%%--------------------------------------------------------------------
+%% @private
+%%--------------------------------------------------------------------
+handle_call(_Request, _From, State) ->
+  {reply, ok, State}.
+
+%%--------------------------------------------------------------------
+%% @private
+%%--------------------------------------------------------------------
+code_change(_OldVsn, State, _Extra) ->
+  {ok, State}.
 
 %%%===================================================================
 %%% Internal functions
